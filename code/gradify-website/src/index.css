@@ -1,0 +1,31 @@
+@import "tailwindcss";
+
+/* Nosso theme usando @theme e CSS Custom Properties */
+@theme { 
+  --font-primary: "Amenti", sans-serif;
+
+  /* Cores principais da Gradify */
+  --color-primary: #00B4D8;
+  --color-secondary: #0077B6;
+  --color-accent: #90E0EF;
+  --color-background: #CAF0F8;
+  --color-dark: #03045E;
+
+  --spacing-section: 6rem;
+}
+
+/* Fontes personalizadas Amenti */
+@font-face {
+  font-family: "Amenti";
+  src: url("/fonts/Amenti/Amenti_Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Amenti";
+  src: url("/fonts/Amenti/Amenti_Bold.ttf") format("truetype");
+  font-weight: 700;
+  font-style: normal;
+}
+

@@ -1,0 +1,19 @@
+/* Header.css */
+header {
+  font-family: var(--font-display);
+  background-color: #ffffff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+header a {
+  transition: color 0.3s ease;
+}
+
+header a:hover {
+  color: var(--color-primary);
+}
+
+header .logo {
+  font-weight: 900;
+  color: var(--color-secondary);
+}
