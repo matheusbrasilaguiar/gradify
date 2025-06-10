@@ -20,7 +20,7 @@ We connect educational institutions, students, and donors in a secure, decentral
 
 - **Diploma and certificate** forgery and fraud create significant barriers for graduates, employers, and institutions, undermining fair opportunities and trust within the educational ecosystem.  
 - **Scholarship funds** are often lost to bureaucracy, opacity, and inefficiency, limiting access for deserving students.  
-- **Academic credentials** are not easily portable or verifiable across borders, limiting opportunities for global mobility.
+- **Academic certificates** are often difficult to verify across countries, restricting global mobility for graduates.
 
 **Gradify** addresses these challenges by leveraging **Web3/blockchain** to build a secure, transparent, and immutable infrastructure for academic verification and scholarship management.
 
