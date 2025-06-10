@@ -1,0 +1,39 @@
+@startuml
+!theme spacelab
+title Gradify - Certificate Module Component Diagram
+
+package "Certificate Module" {
+  component "CertificateController" as CC
+  component "CertificateService" as CS
+  component "CertificateRepository" as CR
+  component "BlockchainAdapter" as BA <<OnChain>>
+  component "QRCodeGenerator" as QR
+}
+
+database "PostgreSQL" as DB <<OffChain>>
+cloud "Stellar Blockchain" as Blockchain <<OnChain>>
+cloud "IPFS / Cloud Storage" as Storage <<OffChain>>
+
+actor Institution
+
+' Institution must be verified (add note)
+note right of Institution
+  Only verified institutions\ncan issue certificates
+end note
+
+Institution --> CC : Issue/view certificates
+
+CC --> CS : REST API calls
+CS --> CR : CRUD certificates data
+CS --> QR : Generate QR code for verification
+CS --> BA : Register hash/metadata\non blockchain (NFT/transaction)
+CR --> DB : Save/retrieve certificates
+BA --> Blockchain : Call smart contracts
+CS --> Storage : Upload file,\nget file hash
+
+legend bottom right
+  <<OnChain>> = On-chain (Blockchain/Smart Contracts)
+  <<OffChain>> = Off-chain (Database, Storage, Backend)
+endlegend
+
+@enduml

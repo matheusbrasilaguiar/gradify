@@ -2,88 +2,91 @@
 
 ## 1. Introduction
 
-Gradify is a global Web3 platform designed to issue tamper-proof academic credentials and automate transparent scholarships through blockchain and smart contracts.  
-It connects institutions, students, and donors to democratize education and create a trusted ecosystem for academic achievements.
+Gradify is a global Web3 platform designed to issue tamper-proof academic credentials and automate transparent scholarships through blockchain and smart contracts. It connects institutions, students, and donors to democratize education and create a trusted ecosystem for academic achievements.
 
 ---
 
+**High-Level Context Diagram**
+![High-Level Context Diagram](./Diagrams/images/High-Level%20Context%20Diagram.png)
+
 ## 2. Entities and Relationships
 
-| Entity                   | Key Attributes                                                                                       | Relationships                                                                                                   |
-|--------------------------|------------------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------|
-| Institution              | id, name, address, website, type, created_at, updated_at                                            | Issues Certificates, Manages Scholarships                                                                       |
-| Student                  | id, name, email, phone, course, created_at, updated_at                                              | Receives Certificates, Applies to Scholarships                                                                  |
-| Donor                    | id, name, email, type, created_at, updated_at                                                       | Makes Donations                                                                                                 |
-| Certificate              | id, title, description, issue_date, blockchain_tx_hash, status, created_at, updated_at               | Issued by Institution, Belongs to Student, Has Blockchain Transactions                                          |
-| Scholarship              | id, title, description, amount, eligibility_criteria, status, created_at, updated_at                 | Created by Institution, Receives Applications, Funded by Donations, Releases funds via Blockchain Transactions  |
-| ScholarshipApplication   | id, status, application_date                                                                         | Connects Student and Scholarship                                                                                |
-| Donation                 | id, amount, donation_date, blockchain_tx_hash, status                                                | Made by Donor, Associated with Scholarship, Triggers Blockchain Transactions                                     |
-| BlockchainTransaction    | id, tx_hash, type, created_at, status                                                                | Linked to Certificates, Donations, and Scholarship fund releases                                                |
+| Entity                 | Key Attributes                                                                                                       | Relationships                                                                                                  |
+| ---------------------- | -------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------- |
+| Institution            | `id`, `name`, `address`, `website`, `type`, `verified` (boolean), `created_at`, `updated_at`                         | Issues Certificates, Manages Scholarships                                                                      |
+| Student                | `id`, `name`, `email`, `phone`, `program_id`, `created_at`, `updated_at`                                             | Receives Certificates, Applies to Scholarships                                                                 |
+| Donor                  | `id`, `name`, `email`, `type`, `created_at`, `updated_at`                                                            | Makes Donations                                                                                                |
+| Program                | `id`, `name`, `description`, `institution_id`, `created_at`, `updated_at`                                            | Linked to Certificates, Offered by Institution                                                                 |
+| Certificate            | `id`, `title`, `description`, `issue_date`, `blockchain_tx_hash`, `status`, `program_id`, `created_at`, `updated_at` | Issued by Institution, Belongs to Student, Has Blockchain Transactions                                         |
+| Scholarship            | `id`, `title`, `description`, `amount`, `eligibility_criteria`, `status`, `created_at`, `updated_at`                 | Created by Institution, Receives Applications, Funded by Donations, Releases funds via Blockchain Transactions |
+| ScholarshipApplication | `id`, `status`, `application_date`                                                                                   | Connects Student and Scholarship                                                                               |
+| Donation               | `id`, `amount`, `donation_date`, `blockchain_tx_hash`, `status`                                                      | Made by Donor, Associated with Scholarship, Triggers Blockchain Transactions                                   |
+| BlockchainTransaction  | `id`, `tx_hash`, `type`, `created_at`, `status`                                                                      | Linked to Certificates, Donations, and Scholarship fund releases                                               |
 
-The **Scholarship** entity is directly connected to BlockchainTransaction to reflect its smart contract-based, on-chain funding release mechanism.
+> Institutions must pass an off-chain verification process managed manually by the Gradify team before gaining permissions to issue certificates and manage scholarships.
+
+**Entity Relationship Diagram**
+![Entity Relationship Diagram](./Diagrams/images/ERD%20Diagram.png)
 
 ---
 
 ## 3. Functional and Non-Functional Requirements
 
-### Functional Requirements
+## Functional Requirements
 
-| ID      | Description                                                                                                                                                | Priority |
-|---------|------------------------------------------------------------------------------------------------------------------------------------------------------------|----------|
-| FR-01   | Users (students, institutions, donors) can register and authenticate securely using email/password.                                                        | High     |
-| FR-02   | Users can also authenticate using social logins (Google, LinkedIn, etc.) for convenience.                                                                   | Medium   |
-| FR-03   | Wallet-based login for blockchain-related operations (signing transactions, receiving funds, verifying ownership).                                           | High     |
-| FR-04   | Institutions can issue blockchain-registered academic certificates, stored immutably on the Stellar blockchain.                                              | High     |
-| FR-05   | Certificates include verifiable metadata and blockchain transaction hash for authenticity.                                                                   | High     |
-| FR-06   | Institutions can create and manage scholarship programs, including eligibility criteria, amounts, and milestones for release of funds.                       | High     |
-| FR-07   | Scholarships are represented by smart contracts on the Stellar/Soroban blockchain to automate funding disbursement.                                          | High     |
-| FR-08   | Students can view available scholarships, filter them based on eligibility, and apply directly through the platform.                                         | High     |
-| FR-09   | Donors can fund scholarships, view program details, and track the impact of their donations in real-time.                                                    | High     |
-| FR-10   | Donors’ contributions trigger blockchain transactions for transparency and immutability.                                                                      | High     |
-| FR-11   | Public page and QR code-based verification of academic certificates, accessible by third-party verifiers (e.g., employers).                                   | High     |
-| FR-12   | Personalized dashboards for each user type (student, institution, donor) to view their activity, on-chain interactions, and impact summaries.                 | Medium   |
-| FR-13   | System must clearly separate and integrate on-chain components (smart contracts, transactions) and off-chain components (user data, metadata).                | High     |
+| ID      | Description                                                                                                                 | Priority |
+|---------|-----------------------------------------------------------------------------------------------------------------------------|----------|
+| **FR-01** | User registration and secure authentication (student, institution, donor) using email/password and social login.              | High     |
+| **FR-02** | Wallet-based login for blockchain-related operations (signing transactions, receiving funds, verifying ownership).             | High     |
+| **FR-03** | Institutions can issue blockchain-registered academic certificates (NFTs or hashed records on Stellar/Soroban blockchain).     | High     |
+| **FR-04** | Certificates must include verifiable metadata and blockchain transaction hash for authenticity.                                | High     |
+| **FR-05** | Institutions can create and manage scholarship programs, including eligibility criteria and milestones.                       | High     |
+| **FR-06** | Scholarships represented by smart contracts on Stellar/Soroban to automate fund disbursement.                                  | High     |
+| **FR-07** | Students can browse and apply for scholarships directly through the platform, with filters and status tracking.                | High     |
+| **FR-08** | Donors can fund scholarships, view program details, and track the real-time impact of their donations.                         | High     |
+| **FR-09** | All donations are recorded on-chain for transparency and immutability.                                                          | High     |
+| **FR-10** | Public verification page for academic certificates via QR code or blockchain ID.                                                | High     |
+| **FR-11** | Personalized dashboards for each user type (student, institution, donor) to view their activities and metrics.                  | Medium   |
+| **FR-12** | Profile and role-based access management (e.g., only verified institutions can issue certificates).                             | High     |
+| **FR-13** | Clear integration and separation of on-chain components (smart contracts, transactions) and off-chain data (user profiles).     | High     |
+| **FR-14** | Real-time notifications for key events (e.g., application status, blockchain confirmations).                                    | Medium   |
+| **FR-15** | History tracking for donations and scholarship applications for each user.                                                       | Medium   |
 
 ---
 
-### Non-Functional Requirements
+## Non-Functional Requirements
 
-| ID       | Description                                                                                                                                     | Priority |
-|----------|-------------------------------------------------------------------------------------------------------------------------------------------------|----------|
-| NFR-01   | Low-latency data retrieval for critical actions such as certificate verification and dashboard loading.                                          | High     |
-| NFR-02   | Full compliance with GDPR and LGPD regulations for handling personal data and scholarship application information.                               | High     |
-| NFR-03   | Use of cryptographic hashing and selective disclosure to protect sensitive user data, ensuring privacy in blockchain-registered data.            | High     |
-| NFR-04   | Modular architecture to support horizontal scalability and accommodate high volumes of user registrations, applications, and donations.          | High     |
-| NFR-05   | High availability and data integrity through blockchain-backed records (for certificates, scholarships, and donations).                          | High     |
-| NFR-06   | Secure management of blockchain private keys and wallet integrations (for students receiving funds, institutions issuing certificates).          | High     |
-| NFR-07   | UX/UI must be intuitive and accessible, with future plans for multi-language support and compliance with accessibility standards (WCAG).         | Medium   |
-| NFR-08   | Separation of concerns between on-chain data (smart contracts, fund disbursement, credentials) and off-chain data (user profiles, dashboards).  | High     |
+| ID      | Description                                                                                                                                 | Priority |
+|---------|---------------------------------------------------------------------------------------------------------------------------------------------|----------|
+| **NFR-01** | Low-latency data retrieval for critical actions such as certificate verification and dashboard loading.                                   | High     |
+| **NFR-02** | Full compliance with GDPR and LGPD regulations for handling personal and scholarship application data.                                    | High     |
+| **NFR-03** | Use of cryptographic hashing and selective disclosure to protect sensitive user data (stored off-chain securely via IPFS or cloud).       | High     |
+| **NFR-04** | Modular architecture to support horizontal scalability and high user/application/donation volumes.                                        | High     |
+| **NFR-05** | High availability and data integrity, leveraging blockchain-backed records for critical components (certificates, scholarships, donations).| High     |
+| **NFR-06** | Secure management of private keys and blockchain wallets (with a clear custodial model for MVP, evolving to self-custody later).          | High     |
+| **NFR-07** | Intuitive, accessible UX/UI with responsive design for both web and mobile devices.                                                       | Medium   |
+| **NFR-08** | Clear separation of concerns between on-chain (smart contracts, transactions) and off-chain (dashboards, user profiles) data.            | High     |
+| **NFR-09** | Monitoring and logging of key events (including blockchain transactions) to detect anomalies or failures.                                 | High     |
+| **NFR-10** | Consistency and clarity in diagrams and flowcharts (e.g., using standardized legends, colors, and naming conventions).                     | Medium   |
 
 ---
 
 # 4. MVP Architecture
 
-## 4.1 Architectural Style
+### 4.1 Architectural Style
 
-The Gradify MVP follows a **microservices-inspired modular architecture**, leveraging the **Layered (n-tier)** style for internal services.  
-This ensures:
+Gradify MVP follows a **microservices-inspired modular architecture**, leveraging a **Layered (n-tier)** style for internal services, ensuring scalability and maintainability.
 
-- Clear separation of concerns (presentation, business logic, data access).  
-- Scalable, maintainable codebases for each module (auth, certificates, scholarships, etc.).  
-- Independent deployment and development of services if needed in the future.
+Critical integrations (blockchain and database) utilize **API-driven communication**. Future scalability considerations include transitioning to containerized microservices and Kubernetes deployments.
 
-For critical integrations with the blockchain (on-chain) and database (off-chain), Gradify uses **API-driven communication**.
+**Container Diagram**
+![Container Diagram](./Diagrams/images/Container%20Diagram.png)
 
 ---
 
-## 4.2 Architectural Pattern
+### 4.2 Architectural Pattern
 
-The chosen architectural pattern is **Hexagonal Architecture (Ports and Adapters)**.  
-This pattern ensures that:
-
-- Core business logic (domain layer) is **isolated** from infrastructure and external dependencies (blockchain, DB, etc.).  
-- Ports (interfaces) define how the system communicates internally and externally.  
-- Adapters implement these ports for specific technologies (Stellar, PostgreSQL, etc.).
+The chosen architectural pattern is **Hexagonal Architecture (Ports and Adapters)**, isolating core business logic from infrastructure, ensuring clear ports and adapters to support blockchain and external service integrations.
 
 ---
 
@@ -151,6 +154,9 @@ The Certificate Module manages the issuance, storage, and verification of academ
 - **IPFS / Cloud Storage**: Stores the actual certificate files, with hashes stored on the blockchain.
 - **Stellar Blockchain**: Records the certificate’s hash and metadata immutably, ensuring authenticity and verification.
 
+**Certificate Module Component Diagram**
+![Certificate Module Component Diagram](./Diagrams/images/Certificate%20Module%20Component%20Diagram.png)
+
 ---
 
 ## 5.2 Scholarship Module
@@ -169,6 +175,9 @@ The Scholarship Module manages scholarships, applications, and the on-chain disb
 
 - **PostgreSQL**: Stores scholarships, applications, donor data, and associated metadata.
 - **Stellar Blockchain**: Automates scholarship fund disbursement via smart contracts, ensuring transparency and immutability.
+
+**Scholarship Module Component Diagram**
+![Scholarship Module Component Diagram](./Diagrams/images/Scholarship%20Module%20Component%20Diagram.png)
 
 ---
 
@@ -203,6 +212,13 @@ Gradify uses **Stellar blockchain** and **Soroban smart contracts** for the foll
 **3. Verification**  
 - Verifiers or third parties use the public verification page (QR code) to retrieve the transaction hash and validate certificate authenticity on-chain.
 
+**Certificate Issuance Flow (On-Chain)**
+![Certificate Issuance Flow (On-Chain)](./Diagrams/images/Certificate%20Issuance%20Flow%20(On-Chain).png)
+
+---
+**Certificate Issuance and Verification Sequence**
+![Certificate Issuance and Verification Sequence)](./Diagrams/images/Certificate%20Issuance%20and%20Verification%20Sequence.png)
+
 ---
 
 ## 6.3 Scholarship Disbursement Flow (On-Chain)
@@ -226,6 +242,13 @@ Gradify uses **Stellar blockchain** and **Soroban smart contracts** for the foll
 **5. Blockchain Transparency**  
 - All scholarship-related transactions (creation, donor funding, disbursement) are recorded immutably on the Stellar blockchain for transparency and auditability.
 
+**Scholarship Disbursement Flow (On-Chain)**
+![Scholarship Disbursement Flow (On-Chain)](./Diagrams/images/Scholarship%20Disbursement%20Flow%20(On-Chain).png)
+
+---
+**Scholarship Donation and Disbursement Sequence**
+![Scholarship Donation and Disbursement Sequence](./Diagrams/images/Scholarship%20Donation%20and%20Disbursement%20Sequence.png)
+
 ---
 
 ## 6.4 Key Smart Contract Functions
@@ -237,6 +260,12 @@ Gradify uses **Stellar blockchain** and **Soroban smart contracts** for the foll
 | **applyForScholarship(studentId)**     | Student applies for a scholarship; off-chain review follows.                            |
 | **fundScholarship(donorId, amount)**   | Donor funds a scholarship, tracked immutably on-chain.                                  |
 | **disburseScholarship(studentId)**     | Releases funds to the student’s wallet upon approval.                                   |
+
+---
+
+### 6.5 Key Security Considerations
+
+The MVP employs a custodial model for private key management. Initially, Gradify securely manages blockchain keys and wallets on behalf of institutions and users, with plans to evolve into a self-custody or hybrid model based on future security and user adoption evaluations.
 
 ---
 
@@ -258,6 +287,22 @@ Gradify will use a modern, modular, and scalable technology stack to ensure perf
 | **Monitoring**          | Sentry, Grafana, Prometheus                        | Observability, performance tracking, and error monitoring. |
 
 ---
+
+### 7.1 Future Scalability Roadmap
+
+Initially, Gradify MVP will run on a centralized infrastructure with API-driven services. Future scalability includes:
+
+* Transitioning to microservices architecture with Docker containers and Kubernetes.
+* Implementing advanced monitoring and alerting mechanisms using tools like Prometheus, Grafana, and Sentry.
+* Enhancing decentralized file storage capabilities (e.g., increased IPFS usage).
+* Gradual decentralization of key management (moving towards non-custodial wallets).
+
+---
+
+## 7.2 Deployment View
+
+**Deployment Diagram (MVP Cloud-Native)**
+![Deployment Diagram (MVP Cloud-Native)](./Diagrams/images/Deployment%20Diagram%20(MVP%20Cloud-Native).png)
 
 
 

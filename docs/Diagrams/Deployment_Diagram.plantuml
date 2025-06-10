@@ -1,0 +1,39 @@
+@startuml
+!theme spacelab
+title Gradify - Deployment Diagram (MVP Cloud-Native)
+
+' Nodes / Environments
+node "User Device\n(Web/Mobile Browser)" as User
+
+cloud "Cloud Provider (AWS/Azure/GCP, etc)" {
+  node "Frontend Container\n(React + Tailwind)" as FE
+  node "API Gateway\n(NGINX/Kong) [Optional]" as APIGW
+  node "Backend API Container\n(Nest.js)" as BE
+  database "PostgreSQL Database\n(Managed Cloud Service)" as DB
+  cloud "IPFS / S3 Bucket\n(File Storage)" as Storage
+  cloud "Monitoring Stack\n(Prometheus, Grafana, Sentry)" as Monitoring
+}
+
+cloud "Stellar Blockchain\n+ Soroban Smart Contracts" as Blockchain
+
+' Connections
+User --> FE : HTTPS (UI access)
+FE --> APIGW : HTTPS (API requests)
+APIGW --> BE : REST/GraphQL API calls
+BE --> DB : SQL (secure connection)
+BE --> Storage : File upload/hash retrieval
+BE --> Blockchain : Smart contract calls (Stellar/Soroban SDK)
+BE --> Monitoring : Metrics/Logs
+
+' External actors (optional highlight)
+cloud "Email/SMS Provider" as Notif
+
+BE --> Notif : Sends notifications
+
+legend bottom right
+  <b>Legend:</b>
+  Nodes = Containers/Services (Docker/Kubernetes/Cloud-managed)
+  Cloud = External decentralized/managed service
+endlegend
+
+@enduml

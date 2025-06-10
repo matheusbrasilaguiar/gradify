@@ -1,0 +1,33 @@
+@startuml
+!theme spacelab
+title Scholarship Donation and Disbursement Sequence
+
+actor "Donor" as Donor
+participant "Gradify Backend (Off-chain)" as Backend
+participant "Stellar/Soroban Smart Contract (On-chain)" as Blockchain
+actor "Student" as Student
+
+== Scholarship Donation ==
+Donor -> Backend: Access scholarship page & initiate donation
+Backend -> Backend: Validate donor identity
+Backend -> Blockchain: Call fundScholarship(donorId, amount)
+Blockchain -> Blockchain: Register donation transaction on-chain
+Blockchain --> Backend: Return transaction hash
+Backend -> Backend: Store donation metadata and tx hash in DB
+Backend --> Donor: Donation confirmation & tracking info
+
+== Scholarship Disbursement ==
+Student -> Backend: Apply for scholarship
+Backend -> Backend: Validate eligibility & approve application
+Backend -> Blockchain: Call disburseScholarship(studentId)
+Blockchain -> Blockchain: Verify eligibility & release funds on-chain
+Blockchain --> Backend: Return disbursement transaction hash
+Backend -> Backend: Update application & scholarship status in DB
+Backend --> Student: Notify student of fund release
+
+legend bottom left
+  [Off-chain] Backend DB, Application Logic
+  [On-chain] Blockchain Smart Contract (Stellar/Soroban)
+endlegend
+
+@enduml

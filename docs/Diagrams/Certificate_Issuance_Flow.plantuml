@@ -1,0 +1,44 @@
+@startuml
+!theme spacelab
+skinparam rectangle {
+    BorderColor Black
+    Shadowing false
+}
+skinparam database {
+    BorderColor Black
+}
+skinparam cloud {
+    BorderColor Black
+}
+left to right direction
+
+title Gradify - Certificate Issuance Flow (On-Chain)
+
+actor Institution as Inst
+
+rectangle "Backend API\n(CertificateService)" as BE
+database "PostgreSQL\n(DB)" as DB
+cloud "IPFS /\nCloud Storage" as Storage
+cloud "Stellar Blockchain /\nSoroban Smart Contract" as Blockchain
+
+note right of Inst
+  Only verified institutions\ncan issue certificates
+end note
+
+Inst --> BE : \nCreate Certificate\n(off-chain)\n
+BE --> Storage : \nUpload file,\nget file hash\n
+BE --> DB : \nSave certificate\nmetadata\n
+BE --> Blockchain : \nregisterCertificate\n(hash, metadata)\n
+Blockchain --> BE : \nReturn tx_hash\n
+BE --> DB : \nSave blockchain\ntx_hash\n
+
+note right
+  Verification by third parties\nuses public blockchain data\n(QR code link)
+end note
+
+legend bottom right
+  <<OnChain>> = On-chain (Blockchain/Smart Contracts)
+  <<OffChain>> = Off-chain (Backend, Storage, Database)
+endlegend
+
+@enduml

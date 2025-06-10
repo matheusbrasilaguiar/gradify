@@ -1,0 +1,40 @@
+@startuml
+!theme spacelab
+title Gradify - Scholarship Module Component Diagram
+
+package "Scholarship Module" {
+  component "ScholarshipController" as SC
+  component "ScholarshipService" as SS
+  component "ScholarshipRepository" as SR
+  component "BlockchainAdapter" as BA <<OnChain>>
+  component "NotificationService" as NS
+}
+
+database "PostgreSQL" as DB <<OffChain>>
+cloud "Stellar Blockchain" as Blockchain <<OnChain>>
+
+actor Institution
+actor Student
+actor Donor
+
+note right of Institution
+  Only verified institutions\ncan manage scholarships
+end note
+
+Institution --> SC : Create/manage scholarships
+Student --> SC : Apply to scholarships
+Donor --> SC : View/fund scholarships
+
+SC --> SS : REST API calls
+SS --> SR : CRUD (scholarships, applications)
+SS --> BA : Smart contracts for\nfund disbursement
+SS --> NS : Notify users of status/disbursements
+SR --> DB : Save/retrieve scholarships
+BA --> Blockchain : Smart contract triggers,\nfund release
+
+legend bottom right
+  <<OnChain>> = On-chain (Blockchain/Smart Contracts)
+  <<OffChain>> = Off-chain (Database, Backend)
+endlegend
+
+@enduml

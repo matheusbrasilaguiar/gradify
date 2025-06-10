@@ -1,0 +1,31 @@
+@startuml
+!theme spacelab
+title Certificate Issuance and Verification Sequence
+
+actor "Institution (Verified)" as Institution
+participant "Gradify Backend (Off-chain)" as Backend
+participant "Stellar/Soroban Smart Contract (On-chain)" as Blockchain
+actor "External Verifier" as Verifier
+
+== Certificate Issuance ==
+Institution -> Backend: Submit certificate data & file\n(authentication required)
+Backend -> Backend: Validate institution status (must be verified)
+Backend -> Blockchain: Call registerCertificate(hash, metadata)
+Blockchain -> Blockchain: Register certificate NFT/hash on-chain
+Blockchain --> Backend: Return transaction hash
+Backend -> Backend: Store certificate metadata and tx hash in DB
+Backend --> Institution: Confirmation & public verification link
+
+== Certificate Verification ==
+Verifier -> Backend: Access verification page (by QR code or link)
+Backend -> Backend: Fetch certificate metadata & tx hash
+Backend -> Blockchain: Query transaction hash/verify on-chain record
+Blockchain --> Backend: Return on-chain data/validation
+Backend --> Verifier: Show certificate status and authenticity
+
+legend bottom left
+  [Off-chain] Backend DB, Application Logic
+  [On-chain] Blockchain Smart Contract (Stellar/Soroban)
+endlegend
+
+@enduml

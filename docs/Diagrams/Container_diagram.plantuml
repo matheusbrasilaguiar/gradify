@@ -1,0 +1,46 @@
+@startuml
+!theme spacelab
+title Gradify - Container Diagram
+
+' On-chain/off-chain color legend (exemplo visual)
+skinparam component {
+  BackgroundColor<<OnChain>> #d7f9ed
+  BackgroundColor<<OffChain>> #e3e8f0
+}
+
+' Frontend
+node "Frontend (React + Tailwind)" as FE <<OffChain>> {
+  component "User Interface"
+}
+
+node "API Gateway (optional)" as APIGW <<OffChain>>
+
+' Backend
+node "Backend API (Nest.js)" as BE <<OffChain>> {
+  component "Auth Module"
+  component "Certificate Module"
+  component "Scholarship Module"
+  component "Donations Module"
+  component "Blockchain Module"
+  component "Notification Module"
+}
+
+database "PostgreSQL" as DB <<OffChain>>
+cloud "IPFS / Cloud Storage" as Storage <<OffChain>>
+cloud "Stellar Blockchain + Soroban" as Blockchain <<OnChain>>
+
+FE --> APIGW : HTTP(S)
+APIGW --> BE : REST/GraphQL API
+BE --> DB : SQL queries
+BE --> Storage : File upload/hash
+BE --> Blockchain : Smart contracts
+
+legend bottom right
+  <b>Legend:</b>
+  <&cloud> Cloud/Blockchain = On-chain/Decentralized
+  <&database> = Off-chain Database
+  <<OnChain>> = On-chain (Blockchain/Smart Contracts)
+  <<OffChain>> = Off-chain (Backend, Storage)
+endlegend
+
+@enduml

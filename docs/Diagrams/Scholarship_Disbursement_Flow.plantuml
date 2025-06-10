@@ -5,9 +5,9 @@ title Gradify - Scholarship Disbursement Flow (On-Chain)
 actor Institution
 actor Student
 actor Donor
-database "PostgreSQL" as DB
-rectangle "Backend API\n(ScholarshipService)" as BE
-cloud "Stellar Blockchain / Soroban\nSmart Contract" as Blockchain
+database "PostgreSQL" as DB <<OffChain>>
+rectangle "Backend API\n(ScholarshipService)" as BE <<OffChain>>
+cloud "Stellar Blockchain / Soroban\nSmart Contract" as Blockchain <<OnChain>>
 
 Institution -> BE : Create Scholarship (off-chain)
 BE -> DB : Save scholarship metadata

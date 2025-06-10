@@ -1,0 +1,125 @@
+@startuml
+!theme spacelab
+title Gradify ERD Diagram
+
+' ==== Primary Entities ====
+entity "Institution" as Institution {
+  *id : UUID
+  *name : String
+  address : String
+  website : String
+  type : String
+  verified : Boolean
+  created_at : DateTime
+  updated_at : DateTime
+}
+
+entity "Program" as Program {
+  *id : UUID
+  *name : String
+  description : String
+  institution_id : UUID
+  created_at : DateTime
+  updated_at : DateTime
+}
+
+entity "Student" as Student {
+  *id : UUID
+  *name : String
+  *email : String
+  phone : String
+  program_id : UUID
+  created_at : DateTime
+  updated_at : DateTime
+}
+
+entity "Certificate" as Certificate {
+  *id : UUID
+  *title : String
+  description : String
+  issue_date : Date
+  blockchain_tx_hash : String
+  status : String
+  program_id : UUID
+  created_at : DateTime
+  updated_at : DateTime
+}
+
+entity "Scholarship" as Scholarship {
+  *id : UUID
+  *title : String
+  description : String
+  amount : Decimal
+  eligibility_criteria : String
+  status : String
+  created_at : DateTime
+  updated_at : DateTime
+}
+
+entity "ScholarshipApplication" as ScholarshipApplication {
+  *id : UUID
+  status : String
+  application_date : Date
+}
+
+entity "Donor" as Donor {
+  *id : UUID
+  *name : String
+  *email : String
+  type : String
+  created_at : DateTime
+  updated_at : DateTime
+}
+
+entity "Donation" as Donation {
+  *id : UUID
+  amount : Decimal
+  donation_date : Date
+  blockchain_tx_hash : String
+  status : String
+}
+
+entity "BlockchainTransaction" as BlockchainTransaction {
+  *id : UUID
+  tx_hash : String
+  type : String
+  created_at : DateTime
+  status : String
+}
+
+' ==== Relationships ====
+
+' Institution-centered
+Institution ||--o{ Program : "offers"
+Institution ||--o{ Scholarship : "manages"
+Institution ||--o{ Certificate : "issues"
+
+' Program and Certificates
+Program ||--o{ Certificate : "linked to"
+
+' Student-centered
+Student ||--|| Program : "enrolled in"
+Student ||--o{ ScholarshipApplication : "applies"
+Student ||--o{ Certificate : "receives"
+Student }o--o{ Scholarship : "receives"
+
+' Scholarship Application
+Scholarship ||--o{ ScholarshipApplication : "receives applications"
+
+' Scholarships & Donations
+Scholarship ||--o{ Donation : "funded by"
+Donor ||--o{ Donation : "makes"
+
+' On-chain events
+Scholarship ||--o{ BlockchainTransaction : "releases funds"
+Donation ||--o{ BlockchainTransaction : "triggers"
+Certificate ||--o{ BlockchainTransaction : "registered in"
+
+' ==== Legend ====
+legend bottom right
+  ||--o{ : One to many
+  ||--|| : One to one
+  }o--o{ : Many to many
+endlegend
+
+@enduml
