@@ -1,7 +1,13 @@
 export default function HeroSection() {
   return (
-    <section className="relative min-h-[90vh] flex flex-col items-center justify-center bg-gradient-to-b from-[#0a223a] via-[#12355b] to-[color:var(--color-dark)] overflow-hidden px-4">
-      {/* Background image and particles */}
+    <section
+      className="relative min-h-[90vh] flex flex-col items-center justify-center overflow-hidden px-4 bg-dark"
+      style={{
+        background: 'linear-gradient(120deg, var(--color-dark), var(--color-secondary), var(--color-dark))',
+        backgroundSize: '200% 200%',
+        animation: 'gradientMove 16s ease-in-out infinite',
+      }}
+    >
       <div className="absolute inset-0 z-0">
         <img
           src="/assets/blockchain1.jpg"
@@ -19,8 +25,6 @@ export default function HeroSection() {
           </svg>
         </div>
       </div>
-
-      {/* Main content */}
       <div className="relative z-20 flex flex-col items-center gap-8 mt-10">
         <h1
           className="text-4xl md:text-6xl font-extrabold tracking-tight font-primary bg-gradient-to-r from-white via-[color:var(--color-accent)] to-[color:var(--color-primary)] bg-clip-text text-transparent drop-shadow-[0_2px_24px_rgba(0,0,0,0.8)] animate-gradient"
@@ -51,7 +55,6 @@ export default function HeroSection() {
         </a>
       </div>
 
-      {/* Gradient animation */}
       <style>
         {`
           @keyframes gradientMove {
