@@ -10,9 +10,9 @@
 
 ## Vision
 
-**Gradify** is transforming how the world issues academic credentials and funds scholarships — using blockchain to ensure authenticity, automate disbursement, and build global trust in education.
+**Gradify** is revolutionizing how academic certificates are issued and scholarships are funded — using blockchain to ensure authenticity, automate scholarship allocation, and build global trust in education.
 
-We connect educational institutions, students, and donors in a trusted, decentralized ecosystem to democratize access to education worldwide.
+We connect educational institutions, students, and donors in a secure, decentralized ecosystem that democratizes access to education worldwide.
 
 ---
 
