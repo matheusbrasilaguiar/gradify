@@ -1,0 +1,28 @@
+@startuml
+!theme spacelab
+title Gradify - Scholarship Disbursement Flow (On-Chain)
+
+actor Institution
+actor Student
+actor Donor
+database "PostgreSQL" as DB
+rectangle "Backend API\n(ScholarshipService)" as BE
+cloud "Stellar Blockchain / Soroban\nSmart Contract" as Blockchain
+
+Institution -> BE : Create Scholarship (off-chain)
+BE -> DB : Save scholarship metadata
+BE -> Blockchain : createScholarship(details)
+
+Student -> BE : Apply for scholarship (off-chain)
+BE -> DB : Save application
+
+Institution -> BE : Approve application (off-chain)
+BE -> Blockchain : disburseScholarship(studentId)
+
+Donor -> Blockchain : fundScholarship(amount)
+Blockchain -> Blockchain : Update donor balance
+
+Blockchain -> BE : Notify fund disbursement
+BE -> DB : Update scholarship status
+
+@enduml

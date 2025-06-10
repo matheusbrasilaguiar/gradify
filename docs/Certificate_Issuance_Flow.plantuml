@@ -1,0 +1,20 @@
+@startuml
+!theme spacelab
+title Gradify - Certificate Issuance Flow (On-Chain)
+
+actor Institution
+database "PostgreSQL" as DB
+cloud "IPFS / Cloud Storage" as Storage
+rectangle "Backend API\n(CertificateService)" as BE
+cloud "Stellar Blockchain / Soroban\nSmart Contract" as Blockchain
+
+Institution -> BE : Create Certificate (off-chain)
+BE -> Storage : Upload file\nget file hash
+BE -> DB : Save certificate metadata
+BE -> Blockchain : registerCertificate(hash, metadata)
+Blockchain -> BE : Return tx_hash
+BE -> DB : Save blockchain tx_hash
+
+note right: Verification by third parties\nuses public blockchain data (QR code link)
+
+@enduml

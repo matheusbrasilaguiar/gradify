@@ -1,0 +1,30 @@
+@startuml
+!theme spacelab
+title Gradify - High-Level Context Diagram
+
+actor Student
+actor Institution
+actor Donor
+actor Verifier
+
+package "Gradify Platform" {
+  rectangle "Frontend (React + Tailwind)" as FE
+  rectangle "Backend API (Nest.js / Spring Boot)" as BE
+  database "PostgreSQL" as DB
+  cloud "IPFS / Cloud Storage" as Storage
+  cloud "Stellar Blockchain + Soroban" as Blockchain
+  cloud "API Gateway (optional)" as APIGW
+}
+
+Student --> FE : uses
+Institution --> FE : uses
+Donor --> FE : uses
+Verifier --> FE : validates certificates
+
+FE --> APIGW : HTTP(S) requests
+APIGW --> BE : API calls (REST/GraphQL)
+BE --> DB : stores/retrieves data
+BE --> Storage : uploads/gets file hashes
+BE --> Blockchain : smart contract interactions,\ncertificate and scholarship management
+
+@enduml
