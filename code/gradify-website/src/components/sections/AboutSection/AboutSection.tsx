@@ -24,10 +24,10 @@ export default function AboutSection() {
             className="text-lg md:text-xl font-light text-[color:var(--color-dark)]/90 max-w-xl leading-relaxed"
             style={{ fontFamily: 'Poppins, sans-serif' }}
           >
-            At Gradify, we believe in a future where education is truly accessible and secure.
-            By leveraging blockchain technology, we provide a transparent and reliable platform
-            that connects institutions, donors, and students worldwide, ensuring everyone has an
-            equal opportunity to grow and succeed.
+            At Gradify, we believe in a future where education is secure and accessible. 
+            With blockchain technology, we offer a transparent and reliable platform that unites 
+            institutions, donors, and students around the world — empowering growth 
+            and fostering trust in education.
           </p>
         </div>
 
