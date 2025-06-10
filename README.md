@@ -33,7 +33,7 @@ We connect educational institutions, students, and donors in a secure, decentral
   Institutions can issue blockchain-registered certificates (NFTs/records) verifiable by third parties worldwide.
 
 - **Smart contract-powered, transparent scholarships**  
-  Donors fund scholarships, and smart contracts automate disbursement directly to eligible students, with all transactions recorded on-chain.
+  Institutions manage and fund scholarships, with the option for donors to contribute to specific initiatives. Smart contracts securely allocate funds directly to eligible students, with all transactions transparently recorded on-chain.
 
 - **Role-based dashboards**  
   Dedicated experiences for Students, Institutions, and Donors.
