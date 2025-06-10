@@ -48,10 +48,10 @@ We connect educational institutions, students, and donors in a secure, decentral
 
 ## How It Works
 
-1. **Institutions** issue verifiable certificates and create scholarships.  
-2. **Students** enroll, access available scholarships, and apply seamlessly.  
-3. **Donors** fund scholarships through secure blockchain transactions.  
-4. **Smart contracts** automatically disburse funds to eligible students, ensuring full transparency.
+1. **Institutions** issue verifiable academic certificates and establish scholarship programs.  
+2. **Students** enroll, browse available scholarships, and apply seamlessly.  
+3. **Donors** can optionally contribute to scholarships via secure blockchain transactions.  
+4. **Smart contracts** manage the secure and transparent allocation of funds directly to eligible students.
 
 ---
 
