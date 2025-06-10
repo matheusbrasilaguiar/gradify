@@ -18,10 +18,12 @@ We connect educational institutions, students, and donors in a secure, decentral
 
 ## Why Gradify?
 
-- **Diploma fraud** is a billion-dollar global issue that undermines the credibility of education.
-- **Scholarship funds** are often lost to bureaucracy, opacity, and inefficiency.
-- **Academic credentials** are not easily portable or verifiable across borders.
-- Gradify leverages **Web3/blockchain** to create a global, immutable academic and scholarship infrastructure.
+- **Diploma and certificate** forgery and fraud create significant barriers for graduates, employers, and institutions, undermining fair opportunities and trust within the educational ecosystem.  
+- **Scholarship funds** are often lost to bureaucracy, opacity, and inefficiency, limiting access for deserving students.  
+- **Academic credentials** are not easily portable or verifiable across borders, limiting opportunities for global mobility.
+
+**Gradify** addresses these challenges by leveraging **Web3/blockchain** to build a secure, transparent, and immutable infrastructure for academic verification and scholarship management.
+
 
 ---
 
