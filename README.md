@@ -65,7 +65,7 @@ Gradify uses a **modular, microservices-inspired architecture** with a clear sep
 - **Monitoring:** Prometheus, Grafana, Sentry
 
 > Full technical documentation and diagrams are available in [/docs](./docs).  
-> Key diagrams: [Context](./docs/high-level-context.png) · [ERD](./docs/gradify-erd.png) · [Containers](./docs/container-diagram.png) · [Components](./docs/certificate-module.png) · [Sequences](./docs/scholarship-disbursement-flow.png) · [Deployment](./docs/deployment-diagram.png)
+> Key diagrams: [Context](./docs/Diagrams/images/High-Level%20Context%20Diagram.png) · [ERD](./docs/Diagrams/images/ERD%20Diagram.png) · [Containers](./docs/Diagrams/images/Container%20Diagram.png) · [Components](./docs/Diagrams/images/Certificate%20Module%20Component%20Diagram.png) · [Sequences](./docs/Diagrams/images/Scholarship%20Disbursement%20Flow%20(On-Chain).png) · [Deployment](./docs/Diagrams/images/Deployment%20Diagram%20(MVP%20Cloud-Native).png)
 
 ---
 
