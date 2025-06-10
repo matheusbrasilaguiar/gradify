@@ -1,4 +1,4 @@
-# Gradify_MVP_Technical_Specification.md
+# Gradify MVP Technical Specification
 
 ## 1. Introduction
 
