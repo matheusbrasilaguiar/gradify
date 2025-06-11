@@ -5,7 +5,6 @@ export default function AboutSection() {
       id="about"
     >
       <div className="relative flex flex-col md:flex-row w-full max-w-7xl px-4 xs:px-6 md:px-20 py-14 xs:py-20 md:py-40 gap-10 xs:gap-16 md:gap-24 items-center z-10">
-        {/* Text */}
         <div className="flex-1 flex flex-col gap-6 text-left w-full">
           <span className="uppercase tracking-widest text-xs xs:text-sm font-semibold text-[color:var(--color-primary)] mb-2" style={{ fontFamily: 'Poppins, sans-serif' }}>
             Our Mission
@@ -31,7 +30,6 @@ export default function AboutSection() {
           </p>
         </div>
 
-        {/* Premium image effect */}
         <div className="flex-1 flex items-center justify-center w-full">
           <div className="w-full max-w-xs xs:max-w-sm sm:max-w-md md:max-w-2xl aspect-[16/9] rounded-2xl overflow-hidden shadow-2xl border-4 border-white/80 bg-white/60 hover:scale-105 transition-transform duration-500">
             <img
@@ -43,7 +41,6 @@ export default function AboutSection() {
           </div>
         </div>
       </div>
-      {/* Gradient animation */}
       <style>
         {`
           @keyframes gradientMove {

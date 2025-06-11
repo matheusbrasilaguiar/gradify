@@ -23,7 +23,6 @@ export default function CTASection() {
         <span className="mb-4 inline-flex items-center gap-2 px-4 py-1 rounded-full bg-[color:var(--color-primary)]/10 text-[color:var(--color-primary)] font-semibold text-sm tracking-wide">
           <HiMail className="text-lg" /> Early Access
         </span>
-        {/* Título com destaque */}
         <h2 className="text-4xl md:text-5xl font-black font-primary mb-4 text-[color:var(--color-dark)]">
           Join the <span className="text-[color:var(--color-primary)]">Waitlist</span>
         </h2>
@@ -65,7 +64,6 @@ export default function CTASection() {
             )}
           </button>
         </form>
-        {/* ... */}
       </div>
     </section>
   );

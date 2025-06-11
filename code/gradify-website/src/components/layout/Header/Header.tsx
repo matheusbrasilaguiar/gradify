@@ -12,7 +12,6 @@ export default function Header() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  // Fecha o menu mobile ao navegar
   useEffect(() => {
     if (!mobileMenuOpen) return;
     function closeMenu() {
@@ -37,7 +36,6 @@ export default function Header() {
         borderBottom: scrolled ? "1.5px solid rgba(120,120,180,0.08)" : "none",
       }}
     >
-      {/* Glow animado de fundo */}
       <div className="absolute inset-0 pointer-events-none z-0">
         <div className={`absolute left-1/2 top-0 w-[400px] h-[200px] -translate-x-1/2 blur-2xl rounded-full animate-pulse-slow
           ${scrolled ? "bg-[color:var(--color-accent)]/10" : "bg-[color:var(--color-accent)]/0"}
@@ -47,14 +45,12 @@ export default function Header() {
         `} />
       </div>
       <div className="relative flex items-center justify-between px-4 sm:px-6 md:px-16 py-3 w-full max-w-7xl mx-auto">
-        {/* Logo com ícone animado */}
         <div className="flex items-center gap-3">
           <span className="font-primary text-3xl md:text-4xl font-extrabold tracking-wide bg-gradient-to-r from-[color:var(--color-primary)] via-[color:var(--color-accent)] to-[color:var(--color-secondary)] bg-clip-text text-transparent animate-gradient">
             Gradify
           </span>
         </div>
 
-        {/* Botão menu mobile */}
         <button
           className="md:hidden flex items-center justify-center w-10 h-10 rounded focus:outline-none z-20"
           aria-label="Open menu"
@@ -68,7 +64,6 @@ export default function Header() {
           </div>
         </button>
 
-        {/* Links principais desktop */}
         <nav className="mt-2 hidden md:flex gap-8 font-primary text-base"
           style={{
             color: scrolled ? "var(--color-dark)" : "white",
@@ -110,7 +105,6 @@ export default function Header() {
           Get Started
         </a>
 
-        {/* Menu mobile */}
         <nav
           className={`
             fixed md:hidden top-0 right-0 h-screen w-4/5 max-w-xs bg-white/95 backdrop-blur-xl shadow-2xl z-40 transition-transform duration-300
@@ -145,7 +139,6 @@ export default function Header() {
           </a>
         </nav>
 
-        {/* Overlay para fechar menu mobile */}
         {mobileMenuOpen && (
           <div
             className="fixed inset-0 z-30 bg-black/30 backdrop-blur-sm md:hidden"
@@ -154,13 +147,11 @@ export default function Header() {
           />
         )}
       </div>
-      {/* Linha animada sutil abaixo do header só quando scrolled */}
       {scrolled && (
         <div className="relative w-full h-px z-10 overflow-hidden">
           <div className="absolute inset-0 bg-gradient-to-r from-transparent via-[color:var(--color-accent)]/40 to-transparent animate-gradient-x" />
         </div>
       )}
-      {/* Animations */}
       <style>
         {`
           @keyframes gradientMove {

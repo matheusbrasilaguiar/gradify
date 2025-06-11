@@ -1,24 +1,19 @@
-import { HiMail } from "react-icons/hi";
-
 export default function Footer() {
   return (
     <footer className="relative w-full bg-gradient-to-tr from-[color:var(--color-dark)] via-[#0a223a] to-[color:var(--color-primary)] text-white pt-10 md:pt-16 pb-6 md:pb-8 px-2 md:px-4 flex flex-col items-center overflow-hidden">
-      {/* Glow animado de fundo */}
       <div className="absolute inset-0 pointer-events-none z-0">
         <div className="absolute left-1/2 top-0 w-[400px] sm:w-[600px] h-[400px] sm:h-[600px] -translate-x-1/2 bg-[color:var(--color-accent)]/10 blur-3xl rounded-full animate-pulse-slow" />
         <div className="absolute right-0 bottom-0 w-[180px] sm:w-[300px] h-[180px] sm:h-[300px] bg-[color:var(--color-primary)]/20 blur-2xl rounded-full animate-pulse-slow2" />
       </div>
 
-      <div className="relative z-10 w-full max-w-5xl flex flex-col gap-8 md:gap-8 md:flex-row justify-between items-center md:items-start text-center md:text-left">
-        {/* Logo e nome */}
-        <div className="flex items-center gap-3 mb-2 md:mb-0 justify-center md:justify-start w-full md:w-auto">
-          <span className="font-primary text-2xl md:text-3xl font-extrabold tracking-wide bg-gradient-to-r from-[color:var(--color-primary)] via-[color:var(--color-accent)] to-[color:var(--color-secondary)] bg-clip-text text-transparent animate-gradient">
+      <div className="relative z-10 w-full max-w-5xl flex flex-col items-center justify-center gap-6 text-center">
+        <div className="flex items-center gap-3 mb-2 justify-center w-full">
+          <span className="font-primary text-2xl md:text-4xl font-extrabold tracking-wide bg-gradient-to-r from-[color:var(--color-primary)] via-[color:var(--color-accent)] to-[color:var(--color-secondary)] bg-clip-text text-transparent animate-gradient">
             Gradify
           </span>
         </div>
 
-        {/* Links rápidos com animação */}
-        <nav className="flex flex-wrap justify-center md:justify-start mb-6 gap-6 md:gap-8 font-primary text-base text-white/80 w-full md:w-auto">
+        <nav className="flex flex-wrap justify-center mb-2 gap-6 font-primary text-base text-white/80 w-full">
           {[
             { href: "#about", label: "About" },
             { href: "#features", label: "Features" },
@@ -34,34 +29,12 @@ export default function Footer() {
             </a>
           ))}
         </nav>
-
-        {/* Newsletter/Early Access */}
-        <form
-          className="flex items-center gap-2 bg-white/10 rounded-full px-4 py-2 shadow-inner border border-white/10 transition focus-within:ring-2 focus-within:ring-[color:var(--color-accent)]"
-          onSubmit={e => { e.preventDefault(); }}
-        >
-          <HiMail className="text-lg text-[color:var(--color-accent)]" />
-          <input
-            type="email"
-            placeholder="Your email"
-            className="bg-transparent outline-none border-none text-white placeholder-white/60 px-2 py-1 font-primary text-sm w-32 md:w-40"
-            required
-          />
-          <button
-            type="submit"
-            className="bg-[color:var(--color-accent)] hover:bg-[color:var(--color-primary)] text-white font-bold px-4 py-1 rounded-full transition"
-          >
-            Join
-          </button>
-        </form>
       </div>
 
-      {/* Linha sutil animada */}
       <div className="relative w-full max-w-5xl h-px my-8 overflow-hidden z-10">
         <div className="absolute inset-0 bg-gradient-to-r from-transparent via-[color:var(--color-accent)]/40 to-transparent animate-gradient-x" />
       </div>
 
-      {/* Texto final */}
       <p className="relative z-10 text-xs text-white/60 font-primary text-center flex flex-col md:flex-row items-center gap-2">
         <span>
           &copy; {new Date().getFullYear()} Gradify. All rights reserved.
@@ -72,7 +45,6 @@ export default function Footer() {
         </span>
       </p>
 
-      {/* Animations */}
       <style>
         {`
           @keyframes gradientMove {

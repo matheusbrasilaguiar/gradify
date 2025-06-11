@@ -42,7 +42,6 @@ export default function WhySection() {
       className="relative min-h-[80vh] flex flex-col items-center justify-center bg-gradient-to-br from-white via-[#f8fafc] to-[#e0e7ef] py-16 xs:py-20 md:py-28 px-2 xs:px-4 overflow-hidden"
       id="why-gradify"
     >
-      {/* Subtle animated grid background */}
       <div className="absolute inset-0 z-0 pointer-events-none">
         <svg width="100%" height="100%" className="absolute inset-0" style={{ opacity: 0.13 }}>
           <defs>
@@ -54,7 +53,6 @@ export default function WhySection() {
         </svg>
       </div>
 
-      {/* Title */}
       <div className="mb-12 text-center z-10">
         <span className="uppercase tracking-widest text-sm font-semibold text-[color:var(--color-primary)]" style={{ fontFamily: 'Poppins, sans-serif' }}>
           Why choose
@@ -74,7 +72,6 @@ export default function WhySection() {
         </p>
       </div>
 
-      {/* Cards */}
       <div className="relative w-full max-w-7xl grid grid-cols-1 xs:grid-cols-2 lg:grid-cols-3 gap-6 xs:gap-8 md:gap-10 z-10">
         {benefits.map((benefit, index) => {
           const Icon = icons[index % icons.length];
@@ -117,19 +114,16 @@ export default function WhySection() {
               >
                 {benefit.description}
               </p>
-              {/* Subtle glass border highlight */}
               <div className="absolute inset-0 rounded-3xl pointer-events-none border border-white/30 group-hover:border-[color:var(--color-accent)]/30 transition-colors duration-300" />
             </div>
           );
         })}
       </div>
 
-      {/* Soft background glow */}
       <div className="pointer-events-none absolute -z-10 left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 blur-3xl opacity-20">
         <div className="w-[600px] h-[300px] bg-gradient-to-r from-[color:var(--color-primary)]/20 via-[color:var(--color-accent)]/10 to-[color:var(--color-secondary)]/20 rounded-full" />
       </div>
 
-      {/* Gradient animation and fadeUp */}
       <style>
         {`
           @keyframes gradientMove {

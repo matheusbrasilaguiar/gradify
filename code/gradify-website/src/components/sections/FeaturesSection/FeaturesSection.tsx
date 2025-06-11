@@ -56,7 +56,6 @@ export default function FeaturesSection() {
       className="w-full py-12 md:py-24 px-4 bg-gradient-to-br from-white via-[#f8fafc] to-[#e0e7ef] relative overflow-hidden"
       id="features"
     >
-      {/* Fundo de grade sutil */}
       <div className="absolute inset-0 z-0 pointer-events-none">
         <svg width="100%" height="100%" className="absolute inset-0" style={{ opacity: 0.13 }}>
           <defs>
@@ -68,7 +67,6 @@ export default function FeaturesSection() {
         </svg>
       </div>
 
-      {/* Título */}
       <div className="mb-8 md:mb-12 lg:mb-18 text-center z-10">
         <span className="uppercase tracking-widest text-xs md:text-sm font-semibold text-[color:var(--color-primary)]" style={{ fontFamily: 'Poppins, sans-serif' }}>
           Explore
@@ -88,12 +86,11 @@ export default function FeaturesSection() {
         </p>
       </div>
 
-      {/* Linha central (timeline) com fade superior e inferior */}
       <motion.div
         className="hidden md:block absolute left-1/2 z-0 w-1 rounded-full pointer-events-none"
         style={{
-          top: "320px", // Início mais para baixo
-          height: "calc(100% - 320px - 120px)", // Termina 100px antes do final
+          top: "320px",
+          height: "calc(100% - 320px - 120px)",
           background: "linear-gradient(180deg, transparent 0%, var(--color-primary) 15%, var(--color-accent) 50%, var(--color-secondary) 85%, transparent 100%)",
           filter: "blur(1.5px)",
           transform: "translateX(-50%)",
@@ -110,7 +107,6 @@ export default function FeaturesSection() {
         }}
       />
 
-      {/* Cards timeline */}
       <div className="relative max-w-4xl mx-auto flex flex-col gap-10 md:gap-16 lg:gap-20 z-10">
         {features.map((feature, idx) => {
           const Icon = icons[idx % icons.length];
@@ -124,17 +120,14 @@ export default function FeaturesSection() {
               viewport={{ once: true, amount: 0.2 }}
               transition={{ duration: 0.6, delay: idx * 0.1 }}
             >
-              {/* Máscara ampliada para a linha central (apenas desktop) */}
               <div className="hidden md:block absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-20 h-20 bg-gradient-to-br from-white via-[#f8fafc] to-[#e0e7ef] rounded-full blur-[6px] z-10" />
               
-              {/* Ícone com borda mais pronunciada */}
               <div
                 className="z-30 flex items-center justify-center w-12 h-12 md:w-16 md:h-16 rounded-full bg-gradient-to-tr from-[color:var(--color-primary)]/20 via-[color:var(--color-accent)]/10 to-[color:var(--color-secondary)]/20 shadow-lg ring-4 ring-white/60 mb-4 md:mb-0 md:absolute md:left-1/2 md:-translate-x-1/2 transition-transform hover:scale-110"
               >
                 <Icon className="text-xl md:text-2xl lg:text-3xl text-[color:var(--color-primary)] drop-shadow-lg transition-colors duration-300 hover:text-[color:var(--color-accent)]" />
               </div>
 
-              {/* Card glassmorphism */}
               <div
                 className={`
                   relative bg-white/60 border border-white/40 rounded-2xl md:rounded-3xl backdrop-blur-sm md:backdrop-blur-2xl
@@ -159,12 +152,10 @@ export default function FeaturesSection() {
         })}
       </div>
 
-      {/* Glow de fundo */}
       <div className="pointer-events-none absolute -z-10 left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 blur-3xl opacity-20">
         <div className="w-[600px] h-[300px] bg-gradient-to-r from-[color:var(--color-primary)]/20 via-[color:var(--color-accent)]/10 to-[color:var(--color-secondary)]/20 rounded-full" />
       </div>
 
-      {/* Animações */}
       <style>
         {`
           @keyframes gradientMove {
