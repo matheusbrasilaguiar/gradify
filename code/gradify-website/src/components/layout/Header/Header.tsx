@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 
 export default function Header() {
   const [scrolled, setScrolled] = useState(false);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   useEffect(() => {
     function onScroll() {
@@ -10,6 +11,16 @@ export default function Header() {
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
+
+  // Fecha o menu mobile ao navegar
+  useEffect(() => {
+    if (!mobileMenuOpen) return;
+    function closeMenu() {
+      setMobileMenuOpen(false);
+    }
+    window.addEventListener("resize", closeMenu);
+    return () => window.removeEventListener("resize", closeMenu);
+  }, [mobileMenuOpen]);
 
   return (
     <header
@@ -35,7 +46,7 @@ export default function Header() {
           ${scrolled ? "bg-[color:var(--color-primary)]/10" : "bg-[color:var(--color-primary)]/0"}
         `} />
       </div>
-      <div className="relative flex items-center justify-between px-6 md:px-16 py-3 w-full max-w-7xl mx-auto">
+      <div className="relative flex items-center justify-between px-4 sm:px-6 md:px-16 py-3 w-full max-w-7xl mx-auto">
         {/* Logo com ícone animado */}
         <div className="flex items-center gap-3">
           <span className="font-primary text-3xl md:text-4xl font-extrabold tracking-wide bg-gradient-to-r from-[color:var(--color-primary)] via-[color:var(--color-accent)] to-[color:var(--color-secondary)] bg-clip-text text-transparent animate-gradient">
@@ -43,7 +54,21 @@ export default function Header() {
           </span>
         </div>
 
-        {/* Links principais com animação premium e contraste melhorado */}
+        {/* Botão menu mobile */}
+        <button
+          className="md:hidden flex items-center justify-center w-10 h-10 rounded focus:outline-none z-20"
+          aria-label="Abrir menu"
+          onClick={() => setMobileMenuOpen((v) => !v)}
+        >
+          <span className="sr-only">Abrir menu</span>
+          <div className="space-y-1.5">
+            <span className={`block h-0.5 w-6 bg-[color:var(--color-accent)] transition-all duration-300 ${mobileMenuOpen ? "rotate-45 translate-y-2" : ""}`}></span>
+            <span className={`block h-0.5 w-6 bg-[color:var(--color-accent)] transition-all duration-300 ${mobileMenuOpen ? "opacity-0" : ""}`}></span>
+            <span className={`block h-0.5 w-6 bg-[color:var(--color-accent)] transition-all duration-300 ${mobileMenuOpen ? "-rotate-45 -translate-y-2" : ""}`}></span>
+          </div>
+        </button>
+
+        {/* Links principais desktop */}
         <nav className="hidden md:flex gap-8 font-primary text-base"
           style={{
             color: scrolled ? "var(--color-dark)" : "white",
@@ -76,10 +101,9 @@ export default function Header() {
           ))}
         </nav>
 
-        {/* Botão de ação com contraste e sombra aprimorados */}
         <a
           href="#get-started"
-          className={`ml-6 inline-block font-semibold py-2.5 px-7 rounded-full text-white bg-gradient-to-r from-[color:var(--color-accent)] via-[color:var(--color-primary)] to-[color:var(--color-secondary)] shadow-xl hover:scale-105 hover:shadow-2xl transition-all duration-300 font-primary animate-gradient border border-white/20
+          className={`ml-6 hidden md:inline-block font-semibold py-2.5 px-7 rounded-full text-white bg-gradient-to-r from-[color:var(--color-accent)] via-[color:var(--color-primary)] to-[color:var(--color-secondary)] shadow-xl hover:scale-105 hover:shadow-2xl transition-all duration-300 font-primary animate-gradient border border-white/20
             ${scrolled ? "" : "backdrop-blur-md"}
           `}
           style={{
@@ -90,6 +114,50 @@ export default function Header() {
         >
           Get Started
         </a>
+
+        {/* Menu mobile */}
+        <nav
+          className={`
+            fixed md:hidden top-0 right-0 h-screen w-4/5 max-w-xs bg-white/95 backdrop-blur-xl shadow-2xl z-40 transition-transform duration-300
+            ${mobileMenuOpen ? "translate-x-0" : "translate-x-full"}
+            flex flex-col gap-8 pt-24 px-8
+          `}
+          style={{
+            color: "var(--color-dark)",
+          }}
+        >
+          {[
+            { href: "#home", label: "Home" },
+            { href: "#features", label: "Features" },
+            { href: "#about", label: "About" },
+            { href: "#contact", label: "Contact" },
+          ].map(link => (
+            <a
+              key={link.href}
+              href={link.href}
+              className="font-semibold text-lg py-2 px-2 rounded hover:bg-[color:var(--color-accent)]/10 hover:text-[color:var(--color-accent)] transition"
+              onClick={() => setMobileMenuOpen(false)}
+            >
+              {link.label}
+            </a>
+          ))}
+          <a
+            href="#get-started"
+            className="mt-4 font-semibold py-3 px-7 rounded-full text-white bg-gradient-to-r from-[color:var(--color-accent)] via-[color:var(--color-primary)] to-[color:var(--color-secondary)] shadow-xl hover:scale-105 hover:shadow-2xl transition-all duration-300 font-primary animate-gradient border border-white/20"
+            onClick={() => setMobileMenuOpen(false)}
+          >
+            Get Started
+          </a>
+        </nav>
+
+        {/* Overlay para fechar menu mobile */}
+        {mobileMenuOpen && (
+          <div
+            className="fixed inset-0 z-30 bg-black/30 backdrop-blur-sm md:hidden"
+            onClick={() => setMobileMenuOpen(false)}
+            aria-label="Fechar menu"
+          />
+        )}
       </div>
       {/* Linha animada sutil abaixo do header só quando scrolled */}
       {scrolled && (

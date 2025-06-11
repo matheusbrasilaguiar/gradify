@@ -39,7 +39,7 @@ const benefits = [
 export default function WhySection() {
   return (
     <section
-      className="relative min-h-[80vh] flex flex-col items-center justify-center bg-gradient-to-br from-white via-[#f8fafc] to-[#e0e7ef] py-28 px-4 overflow-hidden"
+      className="relative min-h-[80vh] flex flex-col items-center justify-center bg-gradient-to-br from-white via-[#f8fafc] to-[#e0e7ef] py-16 xs:py-20 md:py-28 px-2 xs:px-4 overflow-hidden"
       id="why-gradify"
     >
       {/* Subtle animated grid background */}
@@ -60,7 +60,7 @@ export default function WhySection() {
           Why choose
         </span>
         <h2
-          className="text-5xl md:text-6xl font-black bg-gradient-to-r from-[color:var(--color-primary)] via-[color:var(--color-accent)] to-[color:var(--color-secondary)] bg-clip-text text-transparent drop-shadow-[0_2px_24px_rgba(0,0,0,0.10)] animate-gradient mt-2"
+          className="text-3xl xs:text-4xl md:text-5xl lg:text-6xl font-black bg-gradient-to-r from-[color:var(--color-primary)] via-[color:var(--color-accent)] to-[color:var(--color-secondary)] bg-clip-text text-transparent drop-shadow-[0_2px_24px_rgba(0,0,0,0.10)] animate-gradient mt-2"
           style={{
             backgroundSize: '200% 200%',
             animation: 'gradientMove 6s ease-in-out infinite',
@@ -69,13 +69,13 @@ export default function WhySection() {
         >
           Gradify?
         </h2>
-        <p className="mt-4 text-lg md:text-xl text-[color:var(--color-dark)]/80 font-light max-w-2xl mx-auto" style={{ fontFamily: 'Poppins, sans-serif' }}>
+        <p className="mt-4 text-base xs:text-lg md:text-xl text-[color:var(--color-dark)]/80 font-light max-w-2xl mx-auto" style={{ fontFamily: 'Poppins, sans-serif' }}>
           A platform that combines security, transparency, and global opportunities to transform academic futures.
         </p>
       </div>
 
       {/* Cards */}
-      <div className="relative w-full max-w-7xl grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10 z-10">
+      <div className="relative w-full max-w-7xl grid grid-cols-1 xs:grid-cols-2 lg:grid-cols-3 gap-6 xs:gap-8 md:gap-10 z-10">
         {benefits.map((benefit, index) => {
           const Icon = icons[index % icons.length];
           const isSpotlight = index === 2;
@@ -83,8 +83,8 @@ export default function WhySection() {
             <div
               key={index}
               className={`
-                group relative bg-white/50 border border-white/30 rounded-3xl p-10 shadow-xl
-                flex flex-col items-center gap-6 backdrop-blur-2xl transition-all duration-300
+                group relative bg-white/50 border border-white/30 rounded-3xl p-6 xs:p-8 md:p-10 shadow-xl
+                flex flex-col items-center gap-4 xs:gap-6 backdrop-blur-2xl transition-all duration-300
                 hover:-translate-y-3 hover:shadow-2xl hover:border-[color:var(--color-primary)]/30
                 focus-visible:ring-4 focus-visible:ring-[color:var(--color-primary)]/30
                 ${isSpotlight
@@ -94,7 +94,7 @@ export default function WhySection() {
                 animate-fadeUp
               `}
               style={{
-                minHeight: 320,
+                minHeight: 240,
                 animationDelay: `${index * 120}ms`,
                 animationFillMode: 'both',
               }}
@@ -102,17 +102,17 @@ export default function WhySection() {
             >
               {/* Highlight on top */}
               <div className="absolute left-1/2 -translate-x-1/2 top-0 w-2/3 h-2 rounded-b-2xl bg-gradient-to-r from-[color:var(--color-primary)]/30 via-[color:var(--color-accent)]/20 to-[color:var(--color-secondary)]/30 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
-              <div className="flex items-center justify-center w-20 h-20 rounded-full bg-gradient-to-tr from-[color:var(--color-primary)]/20 via-[color:var(--color-accent)]/10 to-[color:var(--color-secondary)]/20 mb-2 group-hover:scale-110 transition-transform shadow-lg ring-2 ring-white/40">
-                <Icon className="text-5xl text-[color:var(--color-primary)] drop-shadow-lg transition-colors duration-300 group-hover:text-[color:var(--color-accent)]" />
+              <div className="flex items-center justify-center w-14 h-14 xs:w-16 xs:h-16 md:w-20 md:h-20 rounded-full bg-gradient-to-tr from-[color:var(--color-primary)]/20 via-[color:var(--color-accent)]/10 to-[color:var(--color-secondary)]/20 mb-2 group-hover:scale-110 transition-transform shadow-lg ring-2 ring-white/40">
+                <Icon className="text-3xl xs:text-4xl md:text-5xl text-[color:var(--color-primary)] drop-shadow-lg transition-colors duration-300 group-hover:text-[color:var(--color-accent)]" />
               </div>
               <h3
-                className="text-2xl font-bold text-[color:var(--color-dark)] text-center tracking-tight"
+                className="text-lg xs:text-xl md:text-2xl font-bold text-[color:var(--color-dark)] text-center tracking-tight"
                 style={{ fontFamily: 'Amenti, sans-serif' }}
               >
                 {benefit.title}
               </h3>
               <p
-                className="text-base md:text-lg text-[color:var(--color-dark)]/90 text-center font-light"
+                className="text-sm xs:text-base md:text-lg text-[color:var(--color-dark)]/90 text-center font-light"
                 style={{ fontFamily: 'Poppins, sans-serif' }}
               >
                 {benefit.description}

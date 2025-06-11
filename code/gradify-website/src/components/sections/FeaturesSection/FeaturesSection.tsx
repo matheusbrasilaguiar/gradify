@@ -19,56 +19,85 @@ const icons = [
 
 const features = [
   {
-    title: "Immutable Academic Credentials",
+    title: "Immutable Academic Records",
     description:
-      "Institutions can issue tamper-proof, blockchain-based certificates and diplomas with QR verification.",
+      "Permanent, blockchain-secured academic credentials for lifelong recognition.",
   },
   {
-    title: "Scholarship Management",
+    title: "Scholarship Programs",
     description:
-      "Intuitive tools for institutions to create, manage, and approve scholarship programs with transparency.",
+      "Simple, transparent tools to create, manage, and award scholarships globally.",
   },
   {
     title: "Transparent Donations",
     description:
-      "Donors can directly support students and institutions, with on-chain tracking and impact insights.",
+      "On-chain tracking for donors to support students and measure impact.",
   },
   {
-    title: "Student-Centric Dashboard",
+    title: "Student Dashboard",
     description:
-      "Students get a personalized dashboard to view and apply for scholarships and track their credentials.",
+      "A personalized dashboard to view, apply, and track academic progress and opportunities.",
   },
   {
-    title: "Blockchain Security & Verification",
+    title: "Blockchain Security",
     description:
-      "All credentials and transactions are stored immutably on the Stellar blockchain, ensuring authenticity.",
+      "Tamper-proof storage and verification powered by Stellar blockchain.",
   },
   {
-    title: "Impactful Data & Analytics",
+    title: "Real-time Insights",
     description:
-      "Dashboards for institutions and donors to visualize real-time metrics, adoption rates, and outcomes.",
+      "Dashboards for donors and institutions to monitor adoption and outcomes.",
   },
 ];
 
 export default function FeaturesSection() {
   return (
-    // ...existing code...
-// ...existing code...
     <section
-      className="w-full py-24 px-4 bg-gradient-to-b from-white via-[color:var(--color-primary)]/5 to-white relative overflow-hidden"
+      className="w-full py-12 md:py-24 px-4 bg-gradient-to-br from-white via-[#f8fafc] to-[#e0e7ef] relative overflow-hidden"
       id="features"
     >
-      {/* Linha central premium animada com pontos pulsantes */}
+      {/* Fundo de grade sutil */}
+      <div className="absolute inset-0 z-0 pointer-events-none">
+        <svg width="100%" height="100%" className="absolute inset-0" style={{ opacity: 0.13 }}>
+          <defs>
+            <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+              <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#b6c6e3" strokeWidth="1" />
+            </pattern>
+          </defs>
+          <rect width="100%" height="100%" fill="url(#grid)" />
+        </svg>
+      </div>
+
+      {/* Título */}
+      <div className="mb-8 md:mb-12 text-center z-10">
+        <span className="uppercase tracking-widest text-xs md:text-sm font-semibold text-[color:var(--color-primary)]" style={{ fontFamily: 'Poppins, sans-serif' }}>
+          Explore
+        </span>
+        <h2
+          className="text-2xl md:text-5xl font-black bg-gradient-to-r from-[color:var(--color-primary)] via-[color:var(--color-accent)] to-[color:var(--color-secondary)] bg-clip-text text-transparent drop-shadow-[0_2px_24px_rgba(0,0,0,0.10)] animate-gradient mt-2"
+          style={{
+            backgroundSize: '200% 200%',
+            animation: 'gradientMove 6s ease-in-out infinite',
+            fontFamily: 'Amenti, sans-serif'
+          }}
+        >
+          Platform Features
+        </h2>
+        <p className="mt-2 md:mt-4 text-sm md:text-base lg:text-xl text-[color:var(--color-dark)]/80 font-light max-w-2xl mx-auto px-2" style={{ fontFamily: 'Poppins, sans-serif' }}>
+          A suite of features designed for transparency, security, and global reach.
+        </p>
+      </div>
+
+      {/* Linha central (timeline) com fade superior e inferior */}
       <motion.div
-        className="absolute left-1/2 z-0 w-1 rounded pointer-events-none"
+        className="hidden md:block absolute left-1/2 z-0 w-1 rounded-full pointer-events-none"
         style={{
-          top: "110px", // Ajuste aqui para descer a linha (ex: 110px, pode ajustar conforme o tamanho do seu título)
-          height: "calc(100% - 110px)", // Mantém a linha até o final da seção
-          background: "linear-gradient(180deg, var(--color-primary), var(--color-accent) 50%, var(--color-secondary) 85%, transparent 100%)",
-          filter: "blur(1.5px) drop-shadow(0 0 12px var(--color-accent))",
-          backgroundSize: "100% 300%",
-          backgroundPosition: "0% 0%",
-          boxShadow: "0 0 32px 4px var(--color-accent)/30",
+          top: "250px", // Início mais para baixo
+          height: "calc(100% - 180px - 100px)", // Termina 100px antes do final
+          background: "linear-gradient(180deg, transparent 0%, var(--color-primary) 15%, var(--color-accent) 50%, var(--color-secondary) 85%, transparent 100%)",
+          filter: "blur(1.5px)",
+          transform: "translateX(-50%)",
+          zIndex: 0,
         }}
         animate={{
           backgroundPosition: ["0% 0%", "0% 100%", "0% 0%"],
@@ -79,101 +108,81 @@ export default function FeaturesSection() {
           duration: 6,
           ease: "easeInOut",
         }}
-      >
-        {/* Pontos pulsantes para cada feature */}
-        {features.map((_, idx) => (
-          <motion.span
-            key={idx}
-            className="absolute left-1/2 -translate-x-1/2 w-5 h-5 rounded-full bg-[color:var(--color-accent)]/80 shadow-lg"
-            style={{
-              top: `calc(${(idx + 1) / (features.length + 1) * 100}% - 10px)`,
-              border: "2px solid white",
-            }}
-            initial={{ scale: 0.7, opacity: 0.7 }}
-            whileInView={{ scale: 1.15, opacity: 1 }}
-            animate={{
-              scale: [1, 1.25, 1],
-              opacity: [0.8, 1, 0.8],
-            }}
-            transition={{
-              repeat: Infinity,
-              duration: 2 + idx * 0.2,
-              delay: idx * 0.2,
-              ease: "easeInOut",
-            }}
-          />
-        ))}
-      </motion.div>
-      {/* Fade no topo para não passar por cima do título */}
-      <div className="absolute left-1/2" style={{
-        top: "110px",
-        width: "40px",
-        height: "96px",
-        zIndex: 10,
-        pointerEvents: "none",
-        background: "linear-gradient(to bottom, white 80%, transparent 100%)",
-        transform: "translateX(-50%)"
-      }} />
-      {/* Fade no final da linha */}
-      <div className="absolute left-1/2 bottom-0 -translate-x-1/2 w-10 h-24 z-10 pointer-events-none"
-        style={{
-          background: "linear-gradient(to top, white 80%, transparent 100%)",
-        }}
       />
-      <h2 className="text-4xl md:text-5xl font-black font-primary text-[color:var(--color-dark)] mb-20 text-center relative z-20">
-        Platform Features
-      </h2>
-      <div className="relative max-w-4xl mx-auto flex flex-col gap-20">
+
+      {/* Cards timeline */}
+      <div className="relative max-w-4xl mx-auto flex flex-col gap-10 md:gap-16 lg:gap-20 z-10">
         {features.map((feature, idx) => {
           const Icon = icons[idx % icons.length];
           const isLeft = idx % 2 === 0;
           return (
             <motion.div
               key={idx}
-              className="relative flex items-center w-full min-h-[120px]"
-              initial={{ opacity: 0, y: 60 }}
+              className="relative flex flex-col md:flex-row items-center w-full min-h-[100px] md:min-h-[120px]"
+              initial={{ opacity: 0, y: 40 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.5 }}
-              transition={{ duration: 0.7, delay: idx * 0.15 }}
+              viewport={{ once: true, amount: 0.2 }}
+              transition={{ duration: 0.6, delay: idx * 0.1 }}
             >
-              {/* Ícone animado */}
-              <motion.div
-                className="z-10 flex items-center justify-center w-16 h-16 rounded-full bg-[color:var(--color-primary)]/90 shadow-lg border-4 border-white absolute left-1/2 -translate-x-1/2"
-                whileHover={{ scale: 1.13, boxShadow: "0 0 32px 0 var(--color-accent)" }}
-                transition={{ type: "spring", stiffness: 300 }}
+              {/* Máscara ampliada para a linha central (apenas desktop) */}
+              <div className="hidden md:block absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-20 h-20 bg-gradient-to-br from-white via-[#f8fafc] to-[#e0e7ef] rounded-full blur-[6px] z-10" />
+              
+              {/* Ícone com borda mais pronunciada */}
+              <div
+                className="z-30 flex items-center justify-center w-12 h-12 md:w-16 md:h-16 rounded-full bg-gradient-to-tr from-[color:var(--color-primary)]/20 via-[color:var(--color-accent)]/10 to-[color:var(--color-secondary)]/20 shadow-lg ring-4 ring-white/60 mb-4 md:mb-0 md:absolute md:left-1/2 md:-translate-x-1/2 transition-transform hover:scale-110"
               >
-                <Icon className="text-white text-3xl transition-colors duration-300" />
-              </motion.div>
-              {/* Card de feature com hover animado */}
-              <motion.div
+                <Icon className="text-xl md:text-2xl lg:text-3xl text-[color:var(--color-primary)] drop-shadow-lg transition-colors duration-300 hover:text-[color:var(--color-accent)]" />
+              </div>
+
+              {/* Card glassmorphism */}
+              <div
                 className={`
-                  relative bg-white rounded-2xl shadow-xl px-8 py-8 flex flex-col
-                  ${isLeft ? "items-end text-right mr-[calc(50%+2.5rem)]" : "items-start text-left ml-[calc(50%+2.5rem)]"}
-                  max-w-md w-full border border-[color:var(--color-primary)]/10
-                  group-hover:shadow-2xl transition-all duration-300
+                  relative bg-white/60 border border-white/40 rounded-2xl md:rounded-3xl backdrop-blur-sm md:backdrop-blur-2xl
+                  shadow-md md:shadow-xl px-5 py-5 md:px-7 md:py-7 flex flex-col w-full max-w-[320px] md:max-w-md mx-auto
+                  text-center md:text-left transition-all duration-300 z-20
+                  md:${isLeft ? "items-end text-right mr-[calc(50%+2.5rem)]" : "items-start text-left ml-[calc(50%+2.5rem)]"}
+                  hover:-translate-y-1 md:hover:-translate-y-2 hover:shadow-lg md:hover:shadow-2xl hover:border-[color:var(--color-primary)]/40
                 `}
-                whileHover={{
-                  scale: 1.04,
-                  boxShadow: "0 8px 40px 0 rgba(0,0,0,0.12)",
-                  backgroundColor: "rgba(255,255,255,0.98)",
-                }}
-                transition={{ type: "spring", stiffness: 200 }}
+                style={{ fontFamily: 'Poppins, sans-serif' }}
               >
-                <h3 className="text-xl font-bold text-[color:var(--color-dark)]">
+                <h3 className="text-base md:text-lg lg:text-xl font-bold text-[color:var(--color-dark)]">
                   {feature.title}
                 </h3>
-                <p className="mt-3 text-base text-[color:var(--color-dark)]">
+                <p className="mt-2 text-xs md:text-sm lg:text-base text-[color:var(--color-dark)]/90 font-light">
                   {feature.description}
                 </p>
-              </motion.div>
+                <div className="absolute inset-0 rounded-2xl md:rounded-3xl pointer-events-none border border-white/40 hover:border-[color:var(--color-accent)]/30 transition-colors duration-300" />
+              </div>
             </motion.div>
           );
         })}
       </div>
-      {/* Partículas animadas no fundo */}
-      <div className="pointer-events-none absolute inset-0 z-0">
-        {/* Adicione aqui SVGs ou canvas de partículas animadas */}
+
+      {/* Glow de fundo */}
+      <div className="pointer-events-none absolute -z-10 left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 blur-3xl opacity-20">
+        <div className="w-[600px] h-[300px] bg-gradient-to-r from-[color:var(--color-primary)]/20 via-[color:var(--color-accent)]/10 to-[color:var(--color-secondary)]/20 rounded-full" />
       </div>
+
+      {/* Animações */}
+      <style>
+        {`
+          @keyframes gradientMove {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+          }
+          .animate-gradient {
+            background-size: 200% 200%;
+            animation: gradientMove 6s ease-in-out infinite;
+          }
+          
+          @media (max-width: 768px) {
+            .backdrop-blur-sm {
+              backdrop-filter: blur(4px);
+            }
+          }
+        `}
+      </style>
     </section>
   );
 }
