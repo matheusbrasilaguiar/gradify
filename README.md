@@ -8,6 +8,11 @@
 
 ---
 
+**Check out at:**  
+🌐 **[gradify.tech](https://gradify.tech)**  
+Gradify is currently in development. Explore our vision and progress on the official website.
+
+
 ## Vision
 
 **Gradify** is revolutionizing how academic certificates are issued and scholarships are funded — using blockchain to ensure authenticity, automate scholarship allocation, and build global trust in education.
