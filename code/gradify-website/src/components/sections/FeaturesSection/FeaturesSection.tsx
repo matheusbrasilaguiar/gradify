@@ -69,12 +69,12 @@ export default function FeaturesSection() {
       </div>
 
       {/* Título */}
-      <div className="mb-8 md:mb-12 text-center z-10">
+      <div className="mb-8 md:mb-12 lg:mb-18 text-center z-10">
         <span className="uppercase tracking-widest text-xs md:text-sm font-semibold text-[color:var(--color-primary)]" style={{ fontFamily: 'Poppins, sans-serif' }}>
           Explore
         </span>
         <h2
-          className="text-2xl md:text-5xl font-black bg-gradient-to-r from-[color:var(--color-primary)] via-[color:var(--color-accent)] to-[color:var(--color-secondary)] bg-clip-text text-transparent drop-shadow-[0_2px_24px_rgba(0,0,0,0.10)] animate-gradient mt-2"
+          className="lg:mb-6 lg:mt-4 text-2xl md:text-5xl font-black bg-gradient-to-r from-[color:var(--color-primary)] via-[color:var(--color-accent)] to-[color:var(--color-secondary)] bg-clip-text text-transparent drop-shadow-[0_2px_24px_rgba(0,0,0,0.10)] animate-gradient mt-2"
           style={{
             backgroundSize: '200% 200%',
             animation: 'gradientMove 6s ease-in-out infinite',
@@ -83,7 +83,7 @@ export default function FeaturesSection() {
         >
           Platform Features
         </h2>
-        <p className="mt-2 md:mt-4 text-sm md:text-base lg:text-xl text-[color:var(--color-dark)]/80 font-light max-w-2xl mx-auto px-2" style={{ fontFamily: 'Poppins, sans-serif' }}>
+        <p className="mt-2 md:mt-4 text-sm md:text-base lg:text-xl text-[color:var(--color-dark)]/80 font-light max-w-6xl mx-auto px-2" style={{ fontFamily: 'Poppins, sans-serif' }}>
           A suite of features designed for transparency, security, and global reach.
         </p>
       </div>
@@ -92,8 +92,8 @@ export default function FeaturesSection() {
       <motion.div
         className="hidden md:block absolute left-1/2 z-0 w-1 rounded-full pointer-events-none"
         style={{
-          top: "250px", // Início mais para baixo
-          height: "calc(100% - 180px - 100px)", // Termina 100px antes do final
+          top: "320px", // Início mais para baixo
+          height: "calc(100% - 320px - 120px)", // Termina 100px antes do final
           background: "linear-gradient(180deg, transparent 0%, var(--color-primary) 15%, var(--color-accent) 50%, var(--color-secondary) 85%, transparent 100%)",
           filter: "blur(1.5px)",
           transform: "translateX(-50%)",
@@ -139,8 +139,9 @@ export default function FeaturesSection() {
                 className={`
                   relative bg-white/60 border border-white/40 rounded-2xl md:rounded-3xl backdrop-blur-sm md:backdrop-blur-2xl
                   shadow-md md:shadow-xl px-5 py-5 md:px-7 md:py-7 flex flex-col w-full max-w-[320px] md:max-w-md mx-auto
-                  text-center md:text-left transition-all duration-300 z-20
-                  md:${isLeft ? "items-end text-right mr-[calc(50%+2.5rem)]" : "items-start text-left ml-[calc(50%+2.5rem)]"}
+                  text-center transition-all duration-300 z-20
+                  items-center
+                  ${isLeft ? "md:items-end md:text-right md:mr-[calc(50%+2.5rem)]" : "md:items-start md:text-left md:ml-[calc(50%+2.5rem)]"}
                   hover:-translate-y-1 md:hover:-translate-y-2 hover:shadow-lg md:hover:shadow-2xl hover:border-[color:var(--color-primary)]/40
                 `}
                 style={{ fontFamily: 'Poppins, sans-serif' }}

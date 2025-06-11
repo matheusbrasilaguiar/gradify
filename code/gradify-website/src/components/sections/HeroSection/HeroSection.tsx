@@ -1,6 +1,7 @@
 export default function HeroSection() {
   return (
     <section
+      id="home"
       className="relative min-h-[90vh] flex flex-col items-center justify-center overflow-hidden px-2 sm:px-4 bg-dark"
       style={{
         background: 'linear-gradient(120deg, var(--color-dark), var(--color-secondary), var(--color-dark))',
@@ -27,7 +28,7 @@ export default function HeroSection() {
       </div>
       <div className="relative z-20 flex flex-col items-center gap-6 sm:gap-8 mt-6 sm:mt-10 w-full">
         <h1
-          className="text-2xl xs:text-3xl sm:text-4xl md:text-6xl font-extrabold tracking-tight font-primary bg-gradient-to-r from-white via-[color:var(--color-accent)] to-[color:var(--color-primary)] bg-clip-text text-transparent drop-shadow-[0_2px_24px_rgba(0,0,0,0.8)] animate-gradient text-center"
+          className="text-4xl xs:text-3xl sm:text-4xl md:text-6xl font-extrabold tracking-tight font-primary bg-gradient-to-r from-white via-[color:var(--color-accent)] to-[color:var(--color-primary)] bg-clip-text text-transparent drop-shadow-[0_2px_24px_rgba(0,0,0,0.8)] animate-gradient text-center"
           style={{
             backgroundSize: '200% 200%',
             animation: 'gradientMove 4s ease-in-out infinite'
@@ -36,7 +37,7 @@ export default function HeroSection() {
           Transforming Academic Opportunities
         </h1>
         <h2
-          className="text-lg xs:text-xl sm:text-2xl md:text-3xl font-semibold bg-gradient-to-r from-[color:var(--color-primary)] via-white to-[color:var(--color-secondary)] bg-clip-text text-transparent drop-shadow-[0_2px_16px_rgba(0,0,0,0.7)] animate-gradient text-center"
+          className="text-2xl xs:text-xl sm:text-2xl md:text-3xl font-semibold bg-gradient-to-r from-[color:var(--color-primary)] via-white to-[color:var(--color-secondary)] bg-clip-text text-transparent drop-shadow-[0_2px_16px_rgba(0,0,0,0.7)] animate-gradient text-center"
           style={{
             backgroundSize: '200% 200%',
             animation: 'gradientMove 6s ease-in-out infinite'

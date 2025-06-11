@@ -57,10 +57,10 @@ export default function Header() {
         {/* Botão menu mobile */}
         <button
           className="md:hidden flex items-center justify-center w-10 h-10 rounded focus:outline-none z-20"
-          aria-label="Abrir menu"
+          aria-label="Open menu"
           onClick={() => setMobileMenuOpen((v) => !v)}
         >
-          <span className="sr-only">Abrir menu</span>
+          <span className="sr-only">Open menu</span>
           <div className="space-y-1.5">
             <span className={`block h-0.5 w-6 bg-[color:var(--color-accent)] transition-all duration-300 ${mobileMenuOpen ? "rotate-45 translate-y-2" : ""}`}></span>
             <span className={`block h-0.5 w-6 bg-[color:var(--color-accent)] transition-all duration-300 ${mobileMenuOpen ? "opacity-0" : ""}`}></span>
@@ -69,7 +69,7 @@ export default function Header() {
         </button>
 
         {/* Links principais desktop */}
-        <nav className="hidden md:flex gap-8 font-primary text-base"
+        <nav className="mt-2 hidden md:flex gap-8 font-primary text-base"
           style={{
             color: scrolled ? "var(--color-dark)" : "white",
             transition: "color 0.3s"
@@ -106,11 +106,6 @@ export default function Header() {
           className={`ml-6 hidden md:inline-block font-semibold py-2.5 px-7 rounded-full text-white bg-gradient-to-r from-[color:var(--color-accent)] via-[color:var(--color-primary)] to-[color:var(--color-secondary)] shadow-xl hover:scale-105 hover:shadow-2xl transition-all duration-300 font-primary animate-gradient border border-white/20
             ${scrolled ? "" : "backdrop-blur-md"}
           `}
-          style={{
-            boxShadow: scrolled
-              ? "0 4px 24px 0 rgba(0,0,0,0.10), 0 1.5px 6px 0 var(--color-accent, #7c3aed)"
-              : "0 2px 12px 0 rgba(0,0,0,0.10), 0 1.5px 6px 0 var(--color-accent, #7c3aed)",
-          }}
         >
           Get Started
         </a>

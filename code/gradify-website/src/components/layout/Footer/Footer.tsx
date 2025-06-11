@@ -2,28 +2,27 @@ import { HiMail } from "react-icons/hi";
 
 export default function Footer() {
   return (
-    <footer className="relative w-full bg-gradient-to-tr from-[color:var(--color-dark)] via-[#0a223a] to-[color:var(--color-primary)] text-white pt-16 pb-8 px-4 flex flex-col items-center overflow-hidden">
+    <footer className="relative w-full bg-gradient-to-tr from-[color:var(--color-dark)] via-[#0a223a] to-[color:var(--color-primary)] text-white pt-10 md:pt-16 pb-6 md:pb-8 px-2 md:px-4 flex flex-col items-center overflow-hidden">
       {/* Glow animado de fundo */}
       <div className="absolute inset-0 pointer-events-none z-0">
-        <div className="absolute left-1/2 top-0 w-[600px] h-[600px] -translate-x-1/2 bg-[color:var(--color-accent)]/10 blur-3xl rounded-full animate-pulse-slow" />
-        <div className="absolute right-0 bottom-0 w-[300px] h-[300px] bg-[color:var(--color-primary)]/20 blur-2xl rounded-full animate-pulse-slow2" />
+        <div className="absolute left-1/2 top-0 w-[400px] sm:w-[600px] h-[400px] sm:h-[600px] -translate-x-1/2 bg-[color:var(--color-accent)]/10 blur-3xl rounded-full animate-pulse-slow" />
+        <div className="absolute right-0 bottom-0 w-[180px] sm:w-[300px] h-[180px] sm:h-[300px] bg-[color:var(--color-primary)]/20 blur-2xl rounded-full animate-pulse-slow2" />
       </div>
 
-      <div className="relative z-10 w-full max-w-5xl flex flex-col md:flex-row justify-between items-center gap-8 text-center md:text-left">
+      <div className="relative z-10 w-full max-w-5xl flex flex-col gap-8 md:gap-8 md:flex-row justify-between items-center md:items-start text-center md:text-left">
         {/* Logo e nome */}
-        <div className="flex items-center gap-3">
-          <span className="font-primary text-3xl font-extrabold tracking-wide bg-gradient-to-r from-[color:var(--color-primary)] via-[color:var(--color-accent)] to-[color:var(--color-secondary)] bg-clip-text text-transparent animate-gradient">
+        <div className="flex items-center gap-3 mb-2 md:mb-0 justify-center md:justify-start w-full md:w-auto">
+          <span className="font-primary text-2xl md:text-3xl font-extrabold tracking-wide bg-gradient-to-r from-[color:var(--color-primary)] via-[color:var(--color-accent)] to-[color:var(--color-secondary)] bg-clip-text text-transparent animate-gradient">
             Gradify
           </span>
         </div>
 
         {/* Links rápidos com animação */}
-        <nav className="flex flex-wrap gap-8 font-primary text-base text-white/80">
+        <nav className="flex flex-wrap justify-center md:justify-start mb-6 gap-6 md:gap-8 font-primary text-base text-white/80 w-full md:w-auto">
           {[
             { href: "#about", label: "About" },
             { href: "#features", label: "Features" },
             { href: "#why-gradify", label: "Why Gradify" },
-            { href: "#get-started", label: "Get Started" },
           ].map((link) => (
             <a
               key={link.href}
