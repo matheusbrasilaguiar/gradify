@@ -9,14 +9,6 @@ export default function CTASection() {
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
     setSent(true);
-
-    // Substitua pela URL do seu webhook do Zapier
-    await fetch("https://hooks.zapier.com/hooks/catch/23321173/uyi4wkj/", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ email }),
-    });
-
     setTimeout(() => setSent(false), 2500);
     setEmail("");
   }
